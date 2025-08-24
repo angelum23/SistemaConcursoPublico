@@ -1,0 +1,69 @@
+## Compilados e temporários .NET
+bin/
+obj/
+out/
+*.exe
+*.dll
+*.pdb
+*.cache
+*.log
+*.user
+*.vspscc
+*.vssscc
+*.dbmdl
+*.bak
+*.backup
+*.snupkg
+
+# Testes
+TestResults/
+*.coverage
+*.coveragexml
+*.testresult.xml
+
+# Pacotes NuGet
+*.nupkg
+*.snupkg
+/packages/
+*.nuget.props
+*.nuget.targets
+
+# Configs locais do VS
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider (JetBrains)
+.idea/
+.idea.*
+*.iml
+*.ipr
+*.iws
+.gradle/
+cmake-build-*/
+riderModule.iml
+/_ReSharper.Caches/
+
+# Arquivos de cache
+*.swp
+*~
+*.tmp
+*.temp
+*.DS_Store
+Thumbs.db
+
+# Configs sensíveis
+secrets.json
+appsettings.Development.json
+appsettings.Local.json
+
+# Logs gerais
+logs/
+*.log
+
+# Outros
+_ReSharper*/
+*.resharper
+*.DotSettings.user
