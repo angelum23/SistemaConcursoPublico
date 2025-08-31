@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\SistemaConcurso.Domain\SistemaConcurso.Domain.csproj" />
+    </ItemGroup>
+
 </Project>
