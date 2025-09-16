@@ -11,7 +11,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\SistemaConcurso.Domain\SistemaConcurso.Domain.csproj" />
+        <ProjectReference Include="..\SistemaConcurso.Domain\SistemaConcurso.Domain.csproj" />
+        <ProjectReference Include="..\SistemaConcurso.Application\SistemaConcurso.Application.csproj" />
     </ItemGroup>
 
 </Project>

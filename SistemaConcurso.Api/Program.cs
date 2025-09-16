@@ -1,13 +1,14 @@
+using SistemaConcurso.Application.Base;
+using SistemaConcurso.Domain.Base;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
-builder.Services.AddControllers();
-builder.Services
+builder.Services.AddOpenApi()
+    .AddDomain()
+    .AddApplication()
     .AddControllers();
-    // .AddDomain()
-    // .AddApplication();
 
 var app = builder.Build();
 
