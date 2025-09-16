@@ -18,12 +18,24 @@ public class BaseMemoryRepository<T> : IBaseRepository<T> where T : IBaseEntity
     public async Task<int> RemoveAsync(int id)
     {
         var entity = await FindAsync(id);
-        if (entity == null || entity.Removed)
+        if (entity == null)
         {
             throw new Exception("Register not fount!");
         }
         
-        entity.Removed = true;
+        entity.Remove();
+        return entity.Id;
+    }
+
+    public async Task<int> RestoreAsync(int id)
+    {
+        var entity = await FindAsync(id);
+        if (entity == null)
+        {
+            throw new Exception("Register not fount!");
+        }
+        
+        entity.Recover();
         return entity.Id;
     }
     

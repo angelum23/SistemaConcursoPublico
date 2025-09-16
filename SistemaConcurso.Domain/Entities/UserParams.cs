@@ -1,0 +1,84 @@
+using System.Security.Cryptography;
+using System.Text;
+
+namespace SistemaConcurso.Domain.Entities;
+
+/// <summary>
+/// Provides user authentication parameters and password management functionality.
+/// </summary>
+/// <remarks>
+/// This class handles secure storage and retrieval of user passwords using AES encryption.
+/// Note: For production use, consider using a more secure approach for key management
+/// rather than hardcoding encryption keys in the source code.
+/// </remarks>
+public class UserParams
+{
+    /// <summary>
+    /// Gets or sets the user's email address.
+    /// </summary>
+    /// <value>The email address used for user identification and communication.</value>
+    public required string Email { get; set; }
+
+    /// <summary>
+    /// Gets or sets the encrypted password.
+    /// </summary>
+    /// <value>The password in its encrypted form. This should never be stored in plain text.</value>
+    private string Password { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Encryption key used for AES-256 encryption.
+    /// </summary>
+    /// <remarks>
+    /// WARNING: In a production environment, this key should be stored in a secure
+    /// configuration system or key vault, not hardcoded in source.
+    /// </remarks>
+    private static readonly byte[] Key = Encoding.UTF8.GetBytes("SecretKey999"); // 32 bytes for AES-256
+
+    /// <summary>
+    /// Initialization vector used for AES encryption.
+    /// </summary>
+    private static readonly byte[] Iv  = Encoding.UTF8.GetBytes("InitVector123456"); // 16 bytes
+    
+    /// <summary>
+    /// Encrypts and stores the provided plain text password.
+    /// </summary>
+    /// <param name="plainText">The password in plain text to be encrypted and stored.</param>
+    /// <exception cref="ArgumentNullException">Thrown when plainText is null or empty.</exception>
+    /// <remarks>
+    /// This method uses AES encryption to securely store the password.
+    /// The password is never stored in plain text.
+    /// </remarks>
+    public void SetPassword(string plainText)
+    {
+        using var aes = Aes.Create();
+        aes.Key = Key;
+        aes.IV = Iv;
+
+        using var encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
+        using var ms = new MemoryStream();
+        using var cs = new CryptoStream(ms, encryptor, CryptoStreamMode.Write);
+        using var sw = new StreamWriter(cs);
+        sw.Write(plainText);
+
+        Password = Convert.ToBase64String(ms.ToArray());
+    }
+
+    /// <summary>
+    /// Decrypts and returns the stored password.
+    /// </summary>
+    /// <returns>The decrypted password in plain text.</returns>
+    /// <exception cref="InvalidOperationException">Thrown when no password has been set.</exception>
+    public string GetPassword()
+    {
+        using var aes = Aes.Create();
+        aes.Key = Key;
+        aes.IV = Iv;
+
+        var buffer = Convert.FromBase64String(Password);
+        using var decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
+        using var ms = new MemoryStream(buffer);
+        using var cs = new CryptoStream(ms, decryptor, CryptoStreamMode.Read);
+        using var sr = new StreamReader(cs);
+        return sr.ReadToEnd();
+    }
+}
