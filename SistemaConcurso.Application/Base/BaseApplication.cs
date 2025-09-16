@@ -2,7 +2,7 @@ using SistemaConcurso.Domain.Base.Interfaces;
 
 namespace SistemaConcurso.Application.Base;
 
-public class AplicBase<T>(IServBase<T> service) : IAplicBase<T> where T : IEntidadeBase
+public class BaseApplication<T>(IBaseService<T> service) : IBaseApplication<T> where T : IBaseEntity
 {
     public List<T> Get() => service.Get();
 

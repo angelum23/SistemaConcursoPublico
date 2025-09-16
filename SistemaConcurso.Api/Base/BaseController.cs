@@ -5,7 +5,7 @@ namespace SistemaConcurso.Api.Base;
 
 [ApiController]
 [Route("api/[controller]")]
-public class ControllerBase<T>(IAplicBase<T> aplic) : ControllerBase where T : IEntidadeBase
+public class BaseController<T>(IBaseApplication<T> aplic) : ControllerBase where T : IBaseEntity
 {
     public Task<IActionResult> FindAsync(int id) => Controller(aplic.FindAsync(id));
     public Task<IActionResult> SaveAsync(T entity) => Controller(aplic.SaveAsync(entity));

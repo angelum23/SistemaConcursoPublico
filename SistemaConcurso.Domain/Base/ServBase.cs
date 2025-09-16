@@ -2,7 +2,7 @@ using SistemaConcurso.Domain.Base.Interfaces;
 
 namespace SistemaConcurso.Domain.Base;
 
-public class ServBase<T>(IRepBase<T> repository) : IServBase<T> where T : IEntidadeBase
+public class ServBase<T>(IBaseRepository<T> repository) : IBaseService<T> where T : IBaseEntity
 {
     public List<T> Get() => repository.Get().ToList();
 

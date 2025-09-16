@@ -1,6 +1,6 @@
 namespace SistemaConcurso.Domain.Base.Interfaces;
 
-public interface IRepBase<T> where T : IEntidadeBase
+public interface IBaseRepository<T> where T : IBaseEntity
 {
     /// <summary>
     /// Retrieves an IQueryable&lt;T&gt; representing a queryable collection of entities of type T.
@@ -25,7 +25,7 @@ public interface IRepBase<T> where T : IEntidadeBase
     /// </summary>
     /// <param name="id">The id of the entity to remove.</param>
     /// <remarks>
-    /// Sets the <see cref="IEntidadeBase.Removido"/> property to <c>true</c> instead of actually removing the entity from the collection.
+    /// Sets the <see cref="IBaseEntity.Removido"/> property to <c>true</c> instead of actually removing the entity from the collection.
     /// </remarks>
     Task<int> RemoveAsync(int id);
     
@@ -34,7 +34,7 @@ public interface IRepBase<T> where T : IEntidadeBase
     /// </summary>
     /// <param name="entity">The entity to update.</param>
     /// <remarks>
-    /// Sets the <see cref="IEntidadeBase.DataAtualizacao"/> property to the current date and time.
+    /// Sets the <see cref="IBaseEntity.DataAtualizacao"/> property to the current date and time.
     /// </remarks>
     Task<T> UpdateAsync(T entity);
     

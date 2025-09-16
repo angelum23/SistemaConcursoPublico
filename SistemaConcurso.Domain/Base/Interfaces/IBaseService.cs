@@ -1,6 +1,6 @@
 namespace SistemaConcurso.Domain.Base.Interfaces;
 
-public interface IAplicBase<T>
+public interface IBaseService<T>
 {
     /// <summary>
     /// Gets a list of all entities.
@@ -29,7 +29,7 @@ public interface IAplicBase<T>
     /// </summary>
     /// <param name="id">The id of the entity to remove.</param>
     /// <remarks>
-    /// Sets the <see cref="IEntidadeBase.Removido"/> property to <c>true</c> instead of actually removing the entity from the collection.
+    /// Sets the <see cref="IBaseEntity.Removido"/> property to <c>true</c> instead of actually removing the entity from the collection.
     /// </remarks>
     Task<int> RemoveAsync(int id);
 }
