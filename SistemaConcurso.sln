@@ -6,7 +6,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaConcurso.Api", "Sist
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaConcurso.Application", "SistemaConcurso.Application\SistemaConcurso.Application.csproj", "{64A03C50-A5B1-48B2-BCD1-BDE4B9BCA320}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaConcurso.Repository", "SistemaConcurso.Repository\SistemaConcurso.Repository.csproj", "{18C838E8-3E4F-485E-904A-6BA04D20D72E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaConcurso.MemoryRepository", "SistemaConcurso.MemoryRepository\SistemaConcurso.MemoryRepository.csproj", "{18C838E8-3E4F-485E-904A-6BA04D20D72E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
