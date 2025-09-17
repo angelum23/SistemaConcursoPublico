@@ -11,6 +11,8 @@ public class BaseMemoryRepository<T> : IBaseRepository<T> where T : IBaseEntity
     public Task<T> AddAsync(T entity)
     {
         entity.RegisterDate = DateTime.Now;
+        entity.Id = _dataBase.Count + 1;
+        
         _dataBase.Add(entity);
         return Task.FromResult(entity);
     }

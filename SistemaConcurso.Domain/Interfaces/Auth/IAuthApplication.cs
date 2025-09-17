@@ -5,5 +5,6 @@ namespace SistemaConcurso.Domain.Interfaces.Auth;
 
 public interface IAuthApplication
 {
-    public Task<AuthView> Login(AuthDto dto);
+    public Task<TokenView> Login(AuthDto dto);
+    public Task Register(AuthDto dto);
 }
