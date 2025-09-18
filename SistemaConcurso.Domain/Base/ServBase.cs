@@ -1,4 +1,5 @@
 using SistemaConcurso.Domain.Base.Interfaces;
+using SistemaConcurso.Domain.Interfaces.Base;
 
 namespace SistemaConcurso.Domain.Base;
 

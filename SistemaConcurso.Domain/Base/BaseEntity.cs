@@ -1,4 +1,6 @@
 using SistemaConcurso.Domain.Base.Interfaces;
+using SistemaConcurso.Domain.Enums;
+using SistemaConcurso.Domain.Exceptions;
 
 namespace SistemaConcurso.Domain.Base;
 
@@ -27,7 +29,7 @@ public abstract class BaseEntity : IBaseEntity
     {
         if (Removed)
         {
-            throw new Exception("Register already removed!");
+            throw new RuleException(EException.RegisterAlreadyRemoved);
         }
         
         Removed = true;
@@ -37,7 +39,7 @@ public abstract class BaseEntity : IBaseEntity
     {
         if (!Removed)
         {
-            throw new Exception("Register not removed!");
+            throw new RuleException(EException.RegisterNotRemoved);
         }
 
         Removed = false;

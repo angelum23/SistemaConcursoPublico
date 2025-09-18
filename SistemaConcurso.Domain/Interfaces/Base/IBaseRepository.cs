@@ -1,6 +1,9 @@
-namespace SistemaConcurso.Domain.Base.Interfaces;
+using SistemaConcurso.Domain.Base.Interfaces;
+using SistemaConcurso.Domain.Interfaces.DependencyInjection;
 
-public interface IBaseRepository<T> where T : IBaseEntity
+namespace SistemaConcurso.Domain.Interfaces.Base;
+
+public interface IBaseRepository<T> : ISingletonDependency where T : IBaseEntity
 {
     /// <summary>
     /// Retrieves an IQueryable&lt;T&gt; representing a queryable collection of entities of type T.

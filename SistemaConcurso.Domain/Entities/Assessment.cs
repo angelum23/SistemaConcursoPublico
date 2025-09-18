@@ -65,18 +65,18 @@ public class Assessment : BaseEntity
     /// The current state of the assessment in its lifecycle (e.g., Not Started, In Progress, Completed, etc.).
     /// This value is managed internally by the class methods.
     /// </value>
-    public AssessmentStatus Status { get; private set; }
+    public EAssessmentStatus Status { get; private set; }
 
     /// <summary>
     /// Marks the assessment as approved by an evaluator.
     /// </summary>
     /// <remarks>
-    /// This method updates the status to <see cref="AssessmentStatus.Approved"/>
+    /// This method updates the status to <see cref="EAssessmentStatus.Approved"/>
     /// and sets the review date to the current date and time.
     /// </remarks>
     public void Approve()
     {
-        Status = AssessmentStatus.Approved;
+        Status = EAssessmentStatus.Approved;
         ReviewDate = DateTime.Now;
     }
 
@@ -85,12 +85,12 @@ public class Assessment : BaseEntity
     /// Marks the assessment as rejected by an evaluator.
     /// </summary>
     /// <remarks>
-    /// This method updates the status to <see cref="AssessmentStatus.Rejected"/>
+    /// This method updates the status to <see cref="EAssessmentStatus.Rejected"/>
     /// and sets the review date to the current date and time.
     /// </remarks>
     public void Reject()
     {
-        Status = AssessmentStatus.Rejected;
+        Status = EAssessmentStatus.Rejected;
         ReviewDate = DateTime.Now;
     }
 
@@ -99,12 +99,12 @@ public class Assessment : BaseEntity
     /// Marks the assessment as completed by the candidate.
     /// </summary>
     /// <remarks>
-    /// This method updates the status to <see cref="AssessmentStatus.Completed"/>
+    /// This method updates the status to <see cref="EAssessmentStatus.Completed"/>
     /// and sets the end date to the current date and time.
     /// </remarks>
     public void Complete()
     {
-        Status = AssessmentStatus.Completed;
+        Status = EAssessmentStatus.Completed;
         EndDate = DateTime.Now;
     }
     
@@ -114,11 +114,11 @@ public class Assessment : BaseEntity
     /// </summary>
     /// <remarks>
     /// This method sets the start date to the current date and time
-    /// and updates the status to <see cref="AssessmentStatus.Started"/>.
+    /// and updates the status to <see cref="EAssessmentStatus.Started"/>.
     /// </remarks>
     public void Start()
     {
         StartDate = DateTime.Now;
-        Status = AssessmentStatus.Started;
+        Status = EAssessmentStatus.Started;
     }
 }

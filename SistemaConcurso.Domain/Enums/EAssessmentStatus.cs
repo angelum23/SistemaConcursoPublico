@@ -2,7 +2,7 @@ using System.ComponentModel;
 
 namespace SistemaConcurso.Domain.Enums;
 
-public enum AssessmentStatus
+public enum EAssessmentStatus
 {
     [Description("Not started")]
     Todo = 1,

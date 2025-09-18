@@ -3,9 +3,7 @@ using SistemaConcurso.Domain.Base.Interfaces;
 
 namespace SistemaConcurso.Api.Base;
 
-[ApiController]
-[Route("api/[controller]")]
-public class BaseController<T>(IBaseApplication<T> aplic) : ControllerBase where T : IBaseEntity
+public class BaseController<T>(IBaseApplication<T> aplic) : BasierController where T : IBaseEntity
 {
     public Task<IActionResult> FindAsync(int id) => Controller(aplic.FindAsync(id));
     public Task<IActionResult> SaveAsync(T entity) => Controller(aplic.SaveAsync(entity));

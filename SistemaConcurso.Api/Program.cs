@@ -6,6 +6,7 @@ using SistemaConcurso.Domain.Base;
 using SistemaConcurso.Domain.Entities;
 using SistemaConcurso.Domain.Interfaces.Token;
 using SistemaConcurso.Domain.Services;
+using SistemaConcurso.MemoryRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,7 @@ builder.Services
     .AddOpenApi()
     .AddDomain()
     .AddApplication()
+    .AddMemoryDbContext()
     .AddControllers();
 
 

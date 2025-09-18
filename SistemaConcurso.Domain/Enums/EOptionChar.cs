@@ -2,7 +2,7 @@ using System.ComponentModel;
 
 namespace SistemaConcurso.Domain.Enums;
 
-public enum OptionChar
+public enum EOptionChar
 {
     [Description("Option A")]
     A = 1,

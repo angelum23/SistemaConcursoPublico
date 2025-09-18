@@ -1,4 +1,7 @@
 ﻿using SistemaConcurso.Domain.Base.Interfaces;
+using SistemaConcurso.Domain.Enums;
+using SistemaConcurso.Domain.Exceptions;
+using SistemaConcurso.Domain.Interfaces.Base;
 
 namespace SistemaConcurso.MemoryRepository;
 
@@ -22,7 +25,7 @@ public class BaseMemoryRepository<T> : IBaseRepository<T> where T : IBaseEntity
         var entity = await FindAsync(id);
         if (entity == null)
         {
-            throw new Exception("Register not found!");
+            throw new RuleException(EException.RegisterNotFound);
         }
         
         entity.Remove();
@@ -34,7 +37,7 @@ public class BaseMemoryRepository<T> : IBaseRepository<T> where T : IBaseEntity
         var entity = await FindAsync(id);
         if (entity == null)
         {
-            throw new Exception("Register not found!");
+            throw new RuleException(EException.RegisterNotFound);
         }
         
         entity.Recover();
@@ -56,7 +59,7 @@ public class BaseMemoryRepository<T> : IBaseRepository<T> where T : IBaseEntity
         var entity = _dataBase.Find(x => x.Id == id);
         if (entity == null || entity.Removed)
         {
-            throw new Exception("Register not found!");
+            throw new RuleException(EException.RegisterNotFound);
         }
 
         return Task.FromResult(entity);

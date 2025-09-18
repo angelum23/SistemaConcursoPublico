@@ -69,7 +69,7 @@ public class Questions : BaseEntity
     /// The letter (A, B, C, or D) corresponding to the correct answer.
     /// This is used for automatic grading of the assessment.
     /// </value>
-    public OptionChar CorrectOption { get; set; }
+    public EOptionChar CorrectEOption { get; set; }
     
     /// <summary>
     /// Gets or sets the option selected by the candidate.
@@ -78,5 +78,5 @@ public class Questions : BaseEntity
     /// The letter (A, B, C, or D) corresponding to the candidate's answer.
     /// This is initially null until the candidate selects an option.
     /// </value>
-    public OptionChar? SelectedOption { get; set; }
+    public EOptionChar? SelectedOption { get; set; }
 }

@@ -1,14 +1,14 @@
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using SistemaConcurso.Api.Base;
 using SistemaConcurso.Domain.Dtos;
-using SistemaConcurso.Domain.Interfaces;
+using SistemaConcurso.Domain.Enums;
 using SistemaConcurso.Domain.Interfaces.Auth;
 
 namespace SistemaConcurso.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class AuthController(IAuthApplication application) : ControllerBase
+public class AuthController(IAuthApplication application) : BasierController
 {
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] AuthDto dto)
@@ -18,9 +18,9 @@ public class AuthController(IAuthApplication application) : ControllerBase
             var reg = await application.Login(dto);
             return Ok(reg);
         }
-        catch (Exception)
+        catch (Exception e)
         {
-            return BadRequest("Login failed!");
+            return Error(e, EException.LoginFailed);
         }
     }
 
@@ -32,9 +32,9 @@ public class AuthController(IAuthApplication application) : ControllerBase
             await application.Register(dto);
             return Ok("Register completed successfully!");
         }
-        catch (Exception)
+        catch (Exception e)
         {
-            return BadRequest("Register failed!");
+            return Error(e, EException.RegisterFailed);
         }
     }
 }

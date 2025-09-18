@@ -49,7 +49,7 @@ public class Users : BaseEntity
     /// WARNING: In a production environment, this key should be stored in a secure
     /// configuration system or key vault, not hardcoded in source.
     /// </remarks>
-    private static readonly byte[] Key = Encoding.UTF8.GetBytes("SecretKey999"); // 32 bytes for AES-256
+    private static readonly byte[] Key = Encoding.UTF8.GetBytes("SecretKey999SecretKey999"); // 32 bytes for AES-256
 
     /// <summary>
     /// Initialization vector used for AES encryption.
@@ -74,8 +74,12 @@ public class Users : BaseEntity
         using var encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
         using var ms = new MemoryStream();
         using var cs = new CryptoStream(ms, encryptor, CryptoStreamMode.Write);
-        using var sw = new StreamWriter(cs);
-        sw.Write(plainText);
+        using (var sw = new StreamWriter(cs))
+        {
+            sw.Write(plainText);
+            sw.Flush();
+            cs.FlushFinalBlock();
+        }
 
         Password = Convert.ToBase64String(ms.ToArray());
     }
@@ -87,16 +91,25 @@ public class Users : BaseEntity
     /// <exception cref="InvalidOperationException">Thrown when no password has been set.</exception>
     private string GetPassword()
     {
-        using var aes = Aes.Create();
-        aes.Key = Key;
-        aes.IV = Iv;
+        if (string.IsNullOrEmpty(Password)) return string.Empty;
 
-        var buffer = Convert.FromBase64String(Password);
-        using var decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
-        using var ms = new MemoryStream(buffer);
-        using var cs = new CryptoStream(ms, decryptor, CryptoStreamMode.Read);
-        using var sr = new StreamReader(cs);
-        return sr.ReadToEnd();
+        try
+        {
+            using var aes = Aes.Create();
+            aes.Key = Key;
+            aes.IV = Iv;
+
+            var buffer = Convert.FromBase64String(Password);
+            using var ms = new MemoryStream(buffer);
+            using var decryptor = aes.CreateDecryptor();
+            using var cs = new CryptoStream(ms, decryptor, CryptoStreamMode.Read);
+            using var sr = new StreamReader(cs, Encoding.UTF8);
+            return sr.ReadToEnd();
+        }
+        catch (Exception ex) when (ex is FormatException or CryptographicException)
+        {
+            throw new InvalidOperationException("Failed to decrypt password.");
+        }
     }
     
     /// <summary>
