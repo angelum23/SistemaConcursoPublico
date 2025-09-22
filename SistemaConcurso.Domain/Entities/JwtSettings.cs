@@ -1,6 +1,8 @@
+using SistemaConcurso.Domain.Interfaces.Token;
+
 namespace SistemaConcurso.Domain.Entities;
 
-public class JwtSettings
+public class JwtSettings : IJwtSettings
 {
     public string Key { get; set; } = "";
     public string Issuer { get; set; } = "";

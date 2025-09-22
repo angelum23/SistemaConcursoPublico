@@ -11,11 +11,11 @@ namespace SistemaConcurso.Domain.Services;
 
 public class AuthService(IBaseRepository<Users> repository) : IAuthService
 {
-    public Task<Users> Login(AuthDto dto)
+    public Task<Users> Login(LoginDto dto)
     {
         const string invalidCredentialsMessage = "Invalid email or password!";
         
-        var user = repository.Get().FirstOrDefault(x => x.Email == dto.Email || x.Username == dto.Username);
+        var user = repository.Get().FirstOrDefault(x => x.Email == dto.Email);
         if (user == null) throw new RuleException(invalidCredentialsMessage);
         
         if (!user.CheckPassword(dto.Password)) throw new Exception(invalidCredentialsMessage);

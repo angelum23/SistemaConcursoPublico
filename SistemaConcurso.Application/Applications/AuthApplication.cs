@@ -7,10 +7,10 @@ namespace SistemaConcurso.Application.Applications;
 
 public class AuthApplication(IAuthService service, ITokenService tokenService) : IAuthApplication
 {
-    public async Task<TokenView> Login(AuthDto dto)
+    public async Task<TokenView> Login(LoginDto dto)
     {
         var user = await service.Login(dto);
-        return tokenService.GenerateTokens(user, "User");
+        return await tokenService.GenerateTokensAsync(user, "User");
     }
 
     public Task Register(AuthDto dto)

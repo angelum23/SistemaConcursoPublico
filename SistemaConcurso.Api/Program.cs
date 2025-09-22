@@ -16,14 +16,6 @@ builder.Services.AddSingleton<ITokenService, TokenService>();
 var jwt = builder.Configuration.GetSection("Jwt").Get<JwtSettings>();
 var key = Encoding.UTF8.GetBytes(jwt.Key);
 
-builder.Services
-    .AddOpenApi()
-    .AddDomain()
-    .AddApplication()
-    .AddMemoryDbContext()
-    .AddControllers();
-
-
 builder.Services.AddAuthentication(options =>
     {
         options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -46,7 +38,14 @@ builder.Services.AddAuthentication(options =>
         };
     });
 
-builder.Services.AddAuthorization();
+
+builder.Services
+    .AddOpenApi()
+    .AddDomain()
+    .AddApplication()
+    .AddMemoryDbContext()
+    .AddAuthorization()
+    .AddControllers();
 
 var app = builder.Build();
 

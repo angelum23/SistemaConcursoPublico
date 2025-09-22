@@ -5,6 +5,6 @@ namespace SistemaConcurso.Domain.Interfaces.Token;
 
 public interface ITokenService
 {
-    TokenView GenerateTokens(Users user, params string[] roles);
-    string GenerateRefreshToken();
+    Task<TokenView> GenerateTokensAsync(Users user, params string[] roles);
+    (string refreshToken, string refreshHash) GenerateRefreshToken();
 }
