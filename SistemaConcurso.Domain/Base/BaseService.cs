@@ -3,7 +3,7 @@ using SistemaConcurso.Domain.Interfaces.Base;
 
 namespace SistemaConcurso.Domain.Base;
 
-public class ServBase<T>(IBaseRepository<T> repository) : IBaseService<T> where T : IBaseEntity
+public class BaseService<T>(IBaseRepository<T> repository) : IBaseService<T> where T : IBaseEntity
 {
     public List<T> Get() => repository.Get().ToList();
 

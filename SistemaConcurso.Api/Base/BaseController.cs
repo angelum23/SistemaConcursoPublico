@@ -5,10 +5,12 @@ namespace SistemaConcurso.Api.Base;
 
 public class BaseController<T>(IBaseApplication<T> aplic) : BasierController where T : IBaseEntity
 {
+    [HttpGet("{id:int}")]
     public Task<IActionResult> FindAsync(int id) => Controller(aplic.FindAsync(id));
-    public Task<IActionResult> SaveAsync(T entity) => Controller(aplic.SaveAsync(entity));
+    [HttpPost("Save")]
+    public Task<IActionResult> SaveAsync([FromBody] T entity) => Controller(aplic.SaveAsync(entity));
     
-
+    [HttpGet]
     public IActionResult Get()
     {
         try
@@ -26,6 +28,7 @@ public class BaseController<T>(IBaseApplication<T> aplic) : BasierController whe
         }
     }
     
+    [HttpDelete]
     public async Task<IActionResult> RemoveAsync(int id)
     {
         try
