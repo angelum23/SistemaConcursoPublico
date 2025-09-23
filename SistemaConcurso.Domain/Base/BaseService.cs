@@ -5,7 +5,7 @@ namespace SistemaConcurso.Domain.Base;
 
 public class BaseService<T>(IBaseRepository<T> repository) : IBaseService<T> where T : IBaseEntity
 {
-    public List<T> Get() => repository.Get().ToList();
+    public List<T> Get(IPagination pagination) => repository.Get().Skip(pagination.Skip).Take(pagination.Take).ToList();
 
     public Task<T> FindAsync(int id) => repository.FindAsync(id);
 

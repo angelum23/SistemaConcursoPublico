@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using SistemaConcurso.Domain.Base.Interfaces;
+using SistemaConcurso.Domain.Interfaces.Base;
 
 namespace SistemaConcurso.Api.Base;
 
@@ -11,11 +12,11 @@ public class BaseController<T>(IBaseApplication<T> aplic) : BasierController whe
     public Task<IActionResult> SaveAsync([FromBody] T entity) => Controller(aplic.SaveAsync(entity));
     
     [HttpGet]
-    public IActionResult Get()
+    public IActionResult Get([FromQuery] IPagination pagination)
     {
         try
         {
-            var result = aplic.Get();
+            var result = aplic.Get(pagination);
             return Ok(new
             {
                 Message = "Operation completed successfully!",

@@ -1,3 +1,5 @@
+using SistemaConcurso.Domain.Interfaces.Base;
+
 namespace SistemaConcurso.Domain.Base.Interfaces;
 
 public interface IBaseApplication<T>
@@ -5,8 +7,9 @@ public interface IBaseApplication<T>
     /// <summary>
     /// Gets a list of all entities.
     /// </summary>
+    /// <param name="pagination"></param>
     /// <returns>A list of all entities.</returns>
-    List<T> Get();
+    List<T> Get(IPagination pagination);
     
     /// <summary>
     /// Finds an entity with the specified <paramref name="id"/> in the repository.
