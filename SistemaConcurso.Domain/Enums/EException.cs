@@ -22,4 +22,8 @@ public enum EException
     RegisterFailed = 8,
     [Description("An error has occurred, try again later!")]
     GeneralError = 9,
+    [Description("Lesson already done!")]
+    LessonAlreadyDone = 10,
+    [Description("Lesson already to do!")]
+    LessonAlreadyTodo = 11,
 }

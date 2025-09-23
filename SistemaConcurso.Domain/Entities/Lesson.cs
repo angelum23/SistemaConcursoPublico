@@ -1,4 +1,6 @@
 using SistemaConcurso.Domain.Base;
+using SistemaConcurso.Domain.Enums;
+using SistemaConcurso.Domain.Exceptions;
 
 namespace SistemaConcurso.Domain.Entities;
 
@@ -39,4 +41,17 @@ public class Lesson : BaseEntity
     /// May include references to study materials or additional resources.
     /// </value>
     public string Description { get; set; }
+    public bool Done { get; private set; }
+
+    public void MarkDone()
+    {
+        if (Done) throw new RuleException(EException.LessonAlreadyDone);
+        Done = true;
+    }
+
+    public void MarkTodo()
+    {
+        if (!Done) throw new RuleException(EException.LessonAlreadyTodo);
+        Done = false;
+    }
 }
