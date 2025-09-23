@@ -20,6 +20,7 @@ public class Roadmaps : BaseEntity
     /// This is a required field and must reference an existing exam.
     /// </value>
     public int IdExam { get; set; }
+    
     /// <summary>
     /// Gets or sets the unique identifier of the job role this roadmap is designed for.
     /// </summary>
@@ -29,4 +30,14 @@ public class Roadmaps : BaseEntity
     /// This is a required field and must reference a valid job role.
     /// </value>
     public int IdSelectedJobRole { get; set; }
+    
+    /// <summary>
+    /// Gets or sets the title of the roadmap.
+    /// </summary>
+    /// <value>
+    /// A string representing the title of the study roadmap.
+    /// This field is optional and can be used to provide a descriptive name
+    /// for better identification of the roadmap.
+    /// </value>
+    public string? Title { get; set; }
 }
