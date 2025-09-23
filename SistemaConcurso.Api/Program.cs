@@ -1,5 +1,6 @@
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using SistemaConcurso.Application.Base;
 using SistemaConcurso.Domain.Base;
@@ -38,12 +39,14 @@ builder.Services.AddAuthentication(options =>
         };
     });
 
+var connectionString = builder.Configuration.GetConnectionString("Default");
 
 builder.Services
     .AddOpenApi()
     .AddDomain()
     .AddApplication()
     .AddPgDbContext()
+    .AddDbContext<PgDbContext>(options => options.UseNpgsql(connectionString))
     .AddAuthorization()
     .AddControllers();
 
