@@ -13,7 +13,7 @@
     <ItemGroup>
         <ProjectReference Include="..\SistemaConcurso.Domain\SistemaConcurso.Domain.csproj" />
         <ProjectReference Include="..\SistemaConcurso.Application\SistemaConcurso.Application.csproj" />
-        <ProjectReference Include="..\SistemaConcurso.MemoryRepository\SistemaConcurso.MemoryRepository.csproj" />
+        <ProjectReference Include="..\SistemaConcurso.PgRepository\SistemaConcurso.PgRepository.csproj" />
     </ItemGroup>
 
     <ItemGroup>

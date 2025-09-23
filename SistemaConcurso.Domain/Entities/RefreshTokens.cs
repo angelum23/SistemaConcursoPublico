@@ -2,7 +2,7 @@ using SistemaConcurso.Domain.Base;
 
 namespace SistemaConcurso.Domain.Entities;
 
-public class RefreshTokenData : BaseEntity
+public class RefreshTokens : BaseEntity
 {
     public string Username { get; set; }
     public string TokenHash { get; set; }

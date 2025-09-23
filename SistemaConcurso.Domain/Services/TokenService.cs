@@ -14,11 +14,11 @@ namespace SistemaConcurso.Domain.Services;
 public class TokenService : ITokenService
 {
     private readonly IJwtSettings _jwt;
-    private readonly IBaseRepository<RefreshTokenData> _tokenRepository;
+    private readonly IBaseRepository<RefreshTokens> _tokenRepository;
     private readonly IBaseRepository<Users> _usersRepository;
 
     public TokenService(IOptions<JwtSettings> jwtOptions, 
-                        IBaseRepository<RefreshTokenData> tokenRepository, 
+                        IBaseRepository<RefreshTokens> tokenRepository, 
                         IBaseRepository<Users> usersRepository)
     {
         _jwt = jwtOptions.Value;
@@ -57,7 +57,7 @@ public class TokenService : ITokenService
         var (refreshToken, refreshHash) = GenerateRefreshToken();
 
         var now = DateTime.UtcNow;
-        var refreshTokenEntity = new RefreshTokenData
+        var refreshTokenEntity = new RefreshTokens
         {
             Username = user.Username,
             TokenHash = refreshHash,
@@ -110,7 +110,7 @@ public class TokenService : ITokenService
         existing.ReplacedByTokenHash = newHash;
 
         var now = DateTime.UtcNow;
-        var newEntity = new RefreshTokenData
+        var newEntity = new RefreshTokens
         {
             Username = user.Username,
             TokenHash = newHash,
@@ -124,7 +124,7 @@ public class TokenService : ITokenService
         return new TokenView(jwt.TokenString, newRaw, jwt.Expires);
     }
 
-    public async Task RevokeAsync(string refreshToken)
+    public void RevokeAsync(string refreshToken)
     {
         if (string.IsNullOrWhiteSpace(refreshToken))
             return;
@@ -135,7 +135,7 @@ public class TokenService : ITokenService
         if (entity.IsActive)
         {
             entity.Revoked = DateTime.UtcNow;
-            await _tokenRepository.UpdateAsync(entity);
+            _tokenRepository.Update(entity);
         }
     }
     

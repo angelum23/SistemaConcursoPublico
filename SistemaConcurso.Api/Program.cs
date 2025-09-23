@@ -6,7 +6,7 @@ using SistemaConcurso.Domain.Base;
 using SistemaConcurso.Domain.Entities;
 using SistemaConcurso.Domain.Interfaces.Token;
 using SistemaConcurso.Domain.Services;
-using SistemaConcurso.MemoryRepository;
+using SistemaConcurso.PgRepository.Base;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,7 +34,7 @@ builder.Services.AddAuthentication(options =>
             ValidateAudience = true,
             ValidAudience = jwt.Audience,
             ValidateLifetime = true,
-            ClockSkew = TimeSpan.FromSeconds(30) // ajustar conforme necessidade
+            ClockSkew = TimeSpan.FromSeconds(30)
         };
     });
 
@@ -43,13 +43,12 @@ builder.Services
     .AddOpenApi()
     .AddDomain()
     .AddApplication()
-    .AddMemoryDbContext()
+    .AddPgDbContext()
     .AddAuthorization()
     .AddControllers();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();

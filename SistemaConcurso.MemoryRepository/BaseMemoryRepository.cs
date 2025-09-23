@@ -5,7 +5,7 @@ using SistemaConcurso.Domain.Interfaces.Base;
 
 namespace SistemaConcurso.MemoryRepository;
 
-public class BaseMemoryRepository<T> : IBaseRepository<T> where T : IBaseEntity
+public class BaseMemoryRepository<T> where T : IBaseEntity
 {
     private List<T> _dataBase = [];
 

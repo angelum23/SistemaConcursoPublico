@@ -9,12 +9,12 @@ public class BaseService<T>(IBaseRepository<T> repository) : IBaseService<T> whe
 
     public Task<T> FindAsync(int id) => repository.FindAsync(id);
 
-    public Task<int> RemoveAsync(int id) => repository.RemoveAsync(id);
+    public Task<T> RemoveAsync(int id) => repository.RemoveAsync(id);
     
     public Task<T> SaveAsync(T entity)
     {
         return entity.Id > 0 
-            ? repository.UpdateAsync(entity) 
+            ? Task.FromResult(repository.Update(entity)) 
             : repository.AddAsync(entity);
     }
 }

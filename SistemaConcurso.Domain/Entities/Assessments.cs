@@ -11,7 +11,7 @@ namespace SistemaConcurso.Domain.Entities;
 /// in a specific study module. It manages the assessment lifecycle from start
 /// to completion, including approval/rejection by an evaluator.
 /// </remarks>
-public class Assessment : BaseEntity
+public class Assessments : BaseEntity
 {
     /// <summary>
     /// Gets or sets the unique identifier of the associated module.

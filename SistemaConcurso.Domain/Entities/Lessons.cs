@@ -12,7 +12,7 @@ namespace SistemaConcurso.Domain.Entities;
 /// required for the public tender. Lessons are organized within modules to provide
 /// structured learning paths for candidates.
 /// </remarks>
-public class Lesson : BaseEntity
+public class Lessons : BaseEntity
 {
     /// <summary>
     /// Gets or sets the unique identifier of the parent module.

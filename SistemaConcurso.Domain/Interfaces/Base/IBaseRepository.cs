@@ -30,7 +30,16 @@ public interface IBaseRepository<T> : ISingletonDependency where T : IBaseEntity
     /// <remarks>
     /// Sets the <see cref="IBaseEntity.Removido"/> property to <c>true</c> instead of actually removing the entity from the collection.
     /// </remarks>
-    Task<int> RemoveAsync(int id);
+    Task<T> RemoveAsync(int id);
+    
+    /// <summary>
+    /// Removes the entity from the repository.
+    /// </summary>
+    /// <param name="entity">The entity to remove.</param>
+    /// <remarks>
+    /// Sets the <see cref="IBaseEntity.Removido"/> property to <c>true</c> instead of actually removing the entity from the collection.
+    /// </remarks>
+    T Remove(T entity);
     
     /// <summary>
     /// Updates the entity with the specified <paramref name="id"/> in the repository.
@@ -39,7 +48,7 @@ public interface IBaseRepository<T> : ISingletonDependency where T : IBaseEntity
     /// <remarks>
     /// Sets the <see cref="IBaseEntity.DataAtualizacao"/> property to the current date and time.
     /// </remarks>
-    Task<T> UpdateAsync(T entity);
+    T Update(T entity);
     
     /// <summary>
     /// Finds an entity with the specified <paramref name="id"/> in the repository.
