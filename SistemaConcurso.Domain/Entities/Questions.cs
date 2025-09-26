@@ -13,15 +13,6 @@ namespace SistemaConcurso.Domain.Entities;
 public class Questions : BaseEntity
 {
     /// <summary>
-    /// Gets or sets the unique identifier of the parent assessment.
-    /// </summary>
-    /// <value>
-    /// The ID that links this question to a specific assessment.
-    /// This is a required field and must reference an existing assessment.
-    /// </value>
-    public int IdAssessment { get; set; }
-    
-    /// <summary>
     /// Gets or sets the question text.
     /// </summary>
     /// <value>
@@ -79,4 +70,14 @@ public class Questions : BaseEntity
     /// This is initially null until the candidate selects an option.
     /// </value>
     public EOptionChar? SelectedOption { get; set; }
+    
+    /// <summary>
+    /// Gets a value indicating whether the selected answer is correct.
+    /// </summary>
+    /// <value>
+    /// <c>true</c> if the <see cref="SelectedOption"/> matches the <see cref="CorrectEOption"/>;
+    /// otherwise, <c>false</c>. <br/>
+    /// Returns <c>false</c> if no option has been selected yet.
+    /// </value>
+    public bool IsCorrect => SelectedOption == CorrectEOption;
 }

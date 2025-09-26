@@ -41,14 +41,36 @@ public class Lessons : BaseEntity
     /// May include references to study materials or additional resources.
     /// </value>
     public string Description { get; set; }
+    /// <summary>
+    /// Gets or sets a value indicating whether the lesson has been marked as completed.
+    /// </summary>
+    /// <value>
+    /// <c>true</c> if the lesson is marked as done; otherwise, <c>false</c>.
+    /// This property has a private setter and should be modified using the
+    /// <see cref="MarkDone"/> and <see cref="MarkTodo"/> methods.
+    /// </value>
     public bool Done { get; private set; }
 
+    /// <summary>
+    /// Marks the current lesson as completed.
+    /// </summary>
+    /// <exception cref="RuleException">
+    /// Thrown when the lesson is already marked as done.
+    /// The exception type is <see cref="EException.LessonAlreadyDone"/>.
+    /// </exception>
     public void MarkDone()
     {
         if (Done) throw new RuleException(EException.LessonAlreadyDone);
         Done = true;
     }
 
+    /// <summary>
+    /// Marks the current lesson as not completed (to-do).
+    /// </summary>
+    /// <exception cref="RuleException">
+    /// Thrown when the lesson is already marked as to-do.
+    /// The exception type is <see cref="EException.LessonAlreadyTodo"/>.
+    /// </exception>
     public void MarkTodo()
     {
         if (!Done) throw new RuleException(EException.LessonAlreadyTodo);

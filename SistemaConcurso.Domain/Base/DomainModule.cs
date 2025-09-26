@@ -17,7 +17,7 @@ public static class DomainModule
                                .Any(z => z.Namespace == null || !z.Namespace.StartsWith("System"))))
                 .AsImplementedInterfaces()
                 .WithScopedLifetime());
-            
+        
         return services;
     }
 }

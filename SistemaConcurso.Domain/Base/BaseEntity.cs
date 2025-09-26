@@ -18,7 +18,7 @@ namespace SistemaConcurso.Domain.Base;
 /// - Automatic tracking of creation and modification dates
 /// - Thread-safe removal and recovery operations with appropriate validation
 /// </remarks>
-public abstract class BaseEntity : IBaseEntity
+public class BaseEntity : IBaseEntity
 {
     public int Id { get; set; }
     public bool Removed { get; private set; }

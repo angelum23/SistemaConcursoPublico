@@ -6,8 +6,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaConcurso.Api", "Sist
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaConcurso.Application", "SistemaConcurso.Application\SistemaConcurso.Application.csproj", "{64A03C50-A5B1-48B2-BCD1-BDE4B9BCA320}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaConcurso.MemoryRepository", "SistemaConcurso.MemoryRepository\SistemaConcurso.MemoryRepository.csproj", "{18C838E8-3E4F-485E-904A-6BA04D20D72E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaConcurso.PgRepository", "SistemaConcurso.PgRepository\SistemaConcurso.PgRepository.csproj", "{7C07DDAC-1C24-471D-B509-1299D1CF8DD6}"
 EndProject
 Global
@@ -28,10 +26,6 @@ Global
 		{64A03C50-A5B1-48B2-BCD1-BDE4B9BCA320}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64A03C50-A5B1-48B2-BCD1-BDE4B9BCA320}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64A03C50-A5B1-48B2-BCD1-BDE4B9BCA320}.Release|Any CPU.Build.0 = Release|Any CPU
-		{18C838E8-3E4F-485E-904A-6BA04D20D72E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{18C838E8-3E4F-485E-904A-6BA04D20D72E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{18C838E8-3E4F-485E-904A-6BA04D20D72E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{18C838E8-3E4F-485E-904A-6BA04D20D72E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7C07DDAC-1C24-471D-B509-1299D1CF8DD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7C07DDAC-1C24-471D-B509-1299D1CF8DD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C07DDAC-1C24-471D-B509-1299D1CF8DD6}.Release|Any CPU.ActiveCfg = Release|Any CPU

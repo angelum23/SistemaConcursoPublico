@@ -12,7 +12,6 @@ using SistemaConcurso.PgRepository.Base;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("Jwt"));
-builder.Services.AddSingleton<ITokenService, TokenService>();
 
 var jwt = builder.Configuration.GetSection("Jwt").Get<JwtSettings>();
 var key = Encoding.UTF8.GetBytes(jwt.Key);

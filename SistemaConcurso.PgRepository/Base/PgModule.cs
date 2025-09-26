@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using SistemaConcurso.Domain.Interfaces.DependencyInjection;

@@ -9,7 +9,7 @@ public class BaseApplication<T>(IBaseService<T> service) : IBaseApplication<T> w
 
     public Task<T> FindAsync(int id) => service.FindAsync(id);
 
-    public Task<int> RemoveAsync(int id) => service.RemoveAsync(id);
+    public Task<T> RemoveAsync(int id) => service.RemoveAsync(id);
     
     public Task<T> SaveAsync(T entity) => service.SaveAsync(entity);
 }

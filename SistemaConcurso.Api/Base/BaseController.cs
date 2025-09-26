@@ -34,8 +34,12 @@ public class BaseController<T>(IBaseApplication<T> aplic) : BasierController whe
     {
         try
         {
-            await aplic.RemoveAsync(id);
-            return Ok($"Register with id {id} removed successfully!");
+            var reg = await aplic.RemoveAsync(id);
+            return Ok(new
+            {
+                Message = $"Register with id {id} removed successfully!", 
+                Content = reg
+            });
         }
         catch (Exception e)
         {
@@ -54,7 +58,6 @@ public class BaseController<T>(IBaseApplication<T> aplic) : BasierController whe
                 Message = okMessage,
                 Content = result
             });
-
         }
         catch (Exception e)
         {
