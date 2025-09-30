@@ -2,7 +2,7 @@ using SistemaConcurso.Domain.Interfaces.Token;
 
 namespace SistemaConcurso.Domain.Entities;
 
-public class JwtSettings : IJwtSettings
+public class JwtSetting : IJwtSetting
 {
     public string Key { get; set; } = "";
     public string Issuer { get; set; } = "";

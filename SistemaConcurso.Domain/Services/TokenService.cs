@@ -13,11 +13,11 @@ namespace SistemaConcurso.Domain.Services;
 
 public class TokenService : ITokenService
 {
-    private readonly IJwtSettings _jwt;
+    private readonly IJwtSetting _jwt;
     private readonly IBaseRepository<RefreshTokens> _tokenRepository;
     private readonly IBaseRepository<Users> _usersRepository;
 
-    public TokenService(IOptions<JwtSettings> jwtOptions, 
+    public TokenService(IOptions<JwtSetting> jwtOptions, 
                         IBaseRepository<RefreshTokens> tokenRepository, 
                         IBaseRepository<Users> usersRepository)
     {

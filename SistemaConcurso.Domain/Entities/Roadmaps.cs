@@ -13,6 +13,16 @@ namespace SistemaConcurso.Domain.Entities;
 public class Roadmaps : BaseEntity
 {
     /// <summary>
+    /// Gets or sets the title of the roadmap.
+    /// </summary>
+    /// <value>
+    /// A string representing the title of the study roadmap.
+    /// This field is optional and can be used to provide a descriptive name
+    /// for better identification of the roadmap.
+    /// </value>
+    public string? Title { get; set; }
+    
+    /// <summary>
     /// Gets or sets the unique identifier of the associated exam.
     /// </summary>
     /// <value>
@@ -22,6 +32,16 @@ public class Roadmaps : BaseEntity
     public int IdExam { get; set; }
     
     /// <summary>
+    /// Gets or sets the exam associated with this roadmap.
+    /// </summary>
+    /// <value>
+    /// The exam instance that this roadmap is linked to.
+    /// This is a required field and must reference an existing exam.
+    /// </value>
+    public Exams Exam { get; set; }
+    
+    
+    /// <summary>
     /// Gets or sets the unique identifier of the job role this roadmap is designed for.
     /// </summary>
     /// <value>
@@ -29,15 +49,7 @@ public class Roadmaps : BaseEntity
     /// the study content and requirements for this roadmap.
     /// This is a required field and must reference a valid job role.
     /// </value>
-    public int IdSelectedJobRole { get; set; }
+    public int? IdSelectedJobRole { get; set; }
     
-    /// <summary>
-    /// Gets or sets the title of the roadmap.
-    /// </summary>
-    /// <value>
-    /// A string representing the title of the study roadmap.
-    /// This field is optional and can be used to provide a descriptive name
-    /// for better identification of the roadmap.
-    /// </value>
-    public string? Title { get; set; }
+    public JobRoles? SelectedJobRole { get; set; }
 }

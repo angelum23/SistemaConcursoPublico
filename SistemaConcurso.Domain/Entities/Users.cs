@@ -40,7 +40,11 @@ public class Users : BaseEntity
     /// Gets or sets the encrypted password.
     /// </summary>
     /// <value>The password in its encrypted form. This should never be stored in plain text.</value>
-    private string Password { get; set; } = string.Empty;
+    public string Password { get; private set; } = string.Empty;
+    
+    public List<Exams> Exams { get; set; } = [];
+
+    #region Rules
 
     /// <summary>
     /// Encryption key used for AES-256 encryption.
@@ -126,4 +130,6 @@ public class Users : BaseEntity
     {
         return GetPassword() == plainText;
     }
+
+    #endregion
 }

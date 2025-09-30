@@ -1,6 +1,6 @@
 namespace SistemaConcurso.Domain.Interfaces.Token;
 
-public interface IJwtSettings
+public interface IJwtSetting
 {
     public string Key { get; set; }
     public string Issuer { get; set; }

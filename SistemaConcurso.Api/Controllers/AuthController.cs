@@ -17,9 +17,9 @@ namespace SistemaConcurso.Api.Controllers;
 public class AuthController : BasierController
 {
     private readonly IAuthApplication _application;
-    private readonly IJwtSettings _jwt;
+    private readonly IJwtSetting _jwt;
 
-    public AuthController(IAuthApplication application, IOptions<JwtSettings> jwt)
+    public AuthController(IAuthApplication application, IOptions<JwtSetting> jwt)
     {
         _jwt = jwt.Value;
         _application = application;

@@ -27,7 +27,9 @@ public class JobRoles : BaseEntity
     public string Description { get; set; } = string.Empty;
     
     /// <summary>
-    /// Gets or sets the foreign key reference to the associated Notice.
+    /// Gets or sets the foreign key reference to the associated Exam.
     /// </summary>
-    public int IdNotice { get; set; }
+    public int IdExam { get; set; }
+    
+    public Exams Exam { get; set; }
 }

@@ -22,3 +22,4 @@ public static class PgModule
         return services;
     }
 }
+//dotnet.exe ef migrations add --project SistemaConcurso.PgRepository\SistemaConcurso.PgRepository.csproj --startup-project SistemaConcurso.Api\SistemaConcurso.Api.csproj --context SistemaConcurso.PgRepository.Base.PgDbContext --configuration Debug --verbose Initial --output-dir Migrations
