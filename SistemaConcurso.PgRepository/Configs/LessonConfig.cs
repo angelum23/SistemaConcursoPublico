@@ -11,6 +11,9 @@ public class LessonConfig : IEntityTypeConfiguration<Lessons>
         builder.ToTable("lessons");
         builder.HasKey(x => x.Id);
         
+        builder.Property(x => x.Title).HasMaxLength(100);
+        builder.Property(x => x.Description).HasColumnType("text");
+        
         builder.HasOne(x => x.Module)
             .WithMany(m => m.Lessons)
             .HasForeignKey(x => x.IdModule)

@@ -13,7 +13,7 @@ public class Lessons : BaseEntity
     public int IdModule { get; set; }
     public Modules? Module { get; set; }
 
-    public List<Questions> Questions { get; set; } = [];
+    public List<LessonAssessment> LessonAssessment { get; set; } = [];
 
     #region Rules
     

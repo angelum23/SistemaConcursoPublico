@@ -12,5 +12,5 @@ public class Modules : BaseEntity
     
     public List<Lessons> Lessons { get; set; } = [];
     
-    public List<Questions> Questions { get; set; } = [];
+    public List<ModuleAssessment> ModuleAssessment { get; set; } = [];
 }
