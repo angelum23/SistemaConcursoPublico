@@ -15,4 +15,21 @@ public class PgDbContext(DbContextOptions options) : DbContext(options)
     public DbSet<RoadmapAssessment> RoadmapQuestions { get; set; }
     public DbSet<Roadmaps> Roadmaps { get; set; }
     public DbSet<Users> Users { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Model
+            .GetEntityTypes()
+            .ToList()
+            .ForEach(x =>
+            {
+                x.SetTableName(x.GetTableName()?.ToLower()?.Replace("_", ""));
+                x.GetProperties().ToList().ForEach(y =>
+                {
+                    y.SetColumnName(y.GetColumnName()?.ToLower()?.Replace("_", ""));
+                });
+            });
+    }
 }
