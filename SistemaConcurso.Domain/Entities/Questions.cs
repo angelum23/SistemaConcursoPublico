@@ -17,6 +17,8 @@ public class Questions : BaseEntity
     public EOptionChar? SelectedOption { get; set; }
     public bool IsCorrect => SelectedOption == CorrectEOption;
     
+    public EOrigin Origin { get; set; }
+    
     public int? IdLessonAssessment { get; set; }
     public LessonAssessment? LessonAssessment { get; set; }
     

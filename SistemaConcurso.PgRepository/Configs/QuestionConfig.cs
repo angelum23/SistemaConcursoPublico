@@ -11,6 +11,9 @@ public class QuestionConfig : IEntityTypeConfiguration<Questions>
         builder.ToTable("questions");
         builder.HasKey(x => x.Id);
         
+        builder.Property(x => x.Order).IsRequired();
+        builder.Property(x => x.Origin).IsRequired();
+        
         builder.HasOne(x => x.LessonAssessment)
             .WithMany(l => l.Questions)
             .HasForeignKey(x => x.IdLessonAssessment)
