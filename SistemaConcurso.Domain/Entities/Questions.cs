@@ -13,9 +13,10 @@ public class Questions : BaseEntity
  
     public int Order { get; set; }
     
-    public EOptionChar CorrectEOption { get; set; }
+    public EOptionChar CorrectOption { get; set; }
     public EOptionChar? SelectedOption { get; set; }
-    public bool IsCorrect => SelectedOption == CorrectEOption;
+    public bool IsDone => SelectedOption != null;
+    public bool IsCorrect => SelectedOption == CorrectOption;
     
     public EOrigin Origin { get; set; }
     
