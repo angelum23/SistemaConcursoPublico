@@ -13,7 +13,6 @@ public class ModuleConfig : IEntityTypeConfiguration<Modules>
         
         builder.HasOne(x => x.Roadmap)
             .WithMany(r => r.Modules)
-            .HasForeignKey(x => x.IdRoadmap)
             .OnDelete(DeleteBehavior.Cascade);
     }
 }

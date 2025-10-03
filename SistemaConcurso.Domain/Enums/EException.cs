@@ -26,4 +26,6 @@ public enum EException
     LessonAlreadyDone = 10,
     [Description("Lesson already to do!")]
     LessonAlreadyTodo = 11,
+    [Description("Logged user not found!")]
+    LoggedUserNotFound = 12,
 }

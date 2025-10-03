@@ -12,7 +12,6 @@ public class ExamConfig : IEntityTypeConfiguration<Exams>
         builder.HasKey(x => x.Id);
         builder.HasOne(x => x.User)
             .WithMany(u => u.Exams)
-            .HasForeignKey(x => x.IdUser)
             .OnDelete(DeleteBehavior.Cascade);
         
         builder.Property(x => x.NoticeTitle).HasMaxLength(250);

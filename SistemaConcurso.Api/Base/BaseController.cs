@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using SistemaConcurso.Domain.Base;
 using SistemaConcurso.Domain.Base.Interfaces;
 using SistemaConcurso.Domain.Interfaces.Base;
 
@@ -12,7 +13,7 @@ public class BaseController<T>(IBaseApplication<T> aplic) : BasierController whe
     public Task<IActionResult> SaveAsync([FromBody] T entity) => Controller(aplic.SaveAsync(entity));
     
     [HttpGet]
-    public IActionResult Get([FromQuery] IPagination pagination)
+    public IActionResult Get([FromQuery] Pagination pagination)
     {
         try
         {
@@ -48,7 +49,7 @@ public class BaseController<T>(IBaseApplication<T> aplic) : BasierController whe
     }
     
     [NonAction]
-    private async Task<IActionResult> Controller(Task<T> action, string okMessage = "Operation completed successfully!")
+    protected async Task<IActionResult> Controller<TView>(Task<TView> action, string okMessage = "Operation completed successfully!")
     {
         try
         {

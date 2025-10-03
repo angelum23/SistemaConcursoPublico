@@ -12,7 +12,7 @@ public class PgDbContext(DbContextOptions options) : DbContext(options)
     public DbSet<Modules> Modules { get; set; }
     public DbSet<Questions> Questions { get; set; }
     public DbSet<RefreshTokens> RefreshTokens { get; set; }
-    public DbSet<RoadmapAssessment> RoadmapQuestions { get; set; }
+    public DbSet<RoadmapAssessments> RoadmapQuestions { get; set; }
     public DbSet<Roadmaps> Roadmaps { get; set; }
     public DbSet<Users> Users { get; set; }
 

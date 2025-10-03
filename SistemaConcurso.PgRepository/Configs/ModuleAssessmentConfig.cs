@@ -4,16 +4,15 @@ using SistemaConcurso.Domain.Entities;
 
 namespace SistemaConcurso.PgRepository.Configs;
 
-public class ModuleAssessmentConfig : IEntityTypeConfiguration<ModuleAssessment>
+public class ModuleAssessmentConfig : IEntityTypeConfiguration<ModuleAssessments>
 {
-    public void Configure(EntityTypeBuilder<ModuleAssessment> builder)
+    public void Configure(EntityTypeBuilder<ModuleAssessments> builder)
     {
         builder.ToTable("moduleassessment");
         builder.HasKey(x => x.Id);
         
         builder.HasOne(x => x.Module)
             .WithMany(m => m.ModuleAssessment)
-            .HasForeignKey(x => x.IdModule)
             .OnDelete(DeleteBehavior.Restrict);
     }
 }

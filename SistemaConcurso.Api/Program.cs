@@ -45,6 +45,7 @@ builder.Services
     .AddDomain()
     .AddApplication()
     .AddPgDbContext()
+    .AddHttpContextAccessor()
     .AddDbContext<PgDbContext>(options => options.UseNpgsql(connectionString))
     .AddAuthorization()
     .AddControllers();

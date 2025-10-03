@@ -16,7 +16,6 @@ public class LessonConfig : IEntityTypeConfiguration<Lessons>
         
         builder.HasOne(x => x.Module)
             .WithMany(m => m.Lessons)
-            .HasForeignKey(x => x.IdModule)
             .OnDelete(DeleteBehavior.Cascade);
     }
 }

@@ -33,17 +33,14 @@ public class QuestionConfig : IEntityTypeConfiguration<Questions>
         
         builder.HasOne(x => x.LessonAssessment)
             .WithMany(l => l.Questions)
-            .HasForeignKey(x => x.IdLessonAssessment)
             .OnDelete(DeleteBehavior.Restrict);
         
         builder.HasOne(x => x.ModuleAssessment)
             .WithMany(m => m.Questions)
-            .HasForeignKey(x => x.IdModuleAssessment)
             .OnDelete(DeleteBehavior.Restrict);
         
         builder.HasOne(x => x.RoadmapAssessment)
             .WithMany(r => r.Questions)
-            .HasForeignKey(x => x.IdRoadmapAssessment)
             .OnDelete(DeleteBehavior.Restrict);
         
         builder.HasIndex(x => x.IdLessonAssessment);

@@ -14,13 +14,11 @@ public class RoadmapConfig : IEntityTypeConfiguration<Roadmaps>
         builder.Property(x => x.Title).HasMaxLength(200);
 
         builder.HasOne(x => x.Exam)
-            .WithOne(e => e.Roadmap)
-            .HasForeignKey<Roadmaps>(r => r.IdExam)
-            .OnDelete(DeleteBehavior.Cascade);
+            .WithMany(e => e.Roadmaps)
+            .OnDelete(DeleteBehavior.Restrict);
 
         builder.HasOne(x => x.SelectedJobRole)
             .WithMany()
-            .HasForeignKey(x => x.IdSelectedJobRole)
             .OnDelete(DeleteBehavior.Restrict);
     }
 }

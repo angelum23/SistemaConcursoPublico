@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using SistemaConcurso.Domain.Base;
 using SistemaConcurso.Domain.Enums;
 
@@ -20,12 +21,15 @@ public class Questions : BaseEntity
     
     public EOrigin Origin { get; set; }
     
+    [ForeignKey("LessonAssessment")]
     public int? IdLessonAssessment { get; set; }
-    public LessonAssessment? LessonAssessment { get; set; }
+    public LessonAssessments? LessonAssessment { get; set; }
     
+    [ForeignKey("ModuleAssessment")]
     public int? IdModuleAssessment { get; set; }
-    public ModuleAssessment? ModuleAssessment { get; set; }
+    public ModuleAssessments? ModuleAssessment { get; set; }
     
+    [ForeignKey("RoadmapAssessment")]
     public int? IdRoadmapAssessment { get; set; }
-    public RoadmapAssessment? RoadmapAssessment { get; set; }
+    public RoadmapAssessments? RoadmapAssessment { get; set; }
 }

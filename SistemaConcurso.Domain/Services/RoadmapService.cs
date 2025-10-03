@@ -3,10 +3,14 @@ using SistemaConcurso.Domain.Base.Interfaces;
 using SistemaConcurso.Domain.Entities;
 using SistemaConcurso.Domain.Interfaces.Base;
 using SistemaConcurso.Domain.Interfaces.Roadmap;
+using SistemaConcurso.Domain.Views;
 
 namespace SistemaConcurso.Domain.Services;
 
-public class RoadmapService(IBaseRepository<Roadmaps> repository) : BaseService<Roadmaps>(repository), IRoadmapService
+public class RoadmapService(IRoadmapRepository repository) : BaseService<Roadmaps>(repository), IRoadmapService
 {
-    
+    public Task<List<HomeView>> GetHomeData(List<HomeExamView> exams)
+    {
+        return repository.GetHomeData(exams);
+    }
 }

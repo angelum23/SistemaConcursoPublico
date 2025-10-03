@@ -5,41 +5,11 @@ using System.Text;
 
 namespace SistemaConcurso.Domain.Entities;
 
-/// <summary>
-/// Represents a user in the system with basic identification information.
-/// </summary>
-/// <remarks>
-/// This class serves as the main entity for user management, storing essential
-/// user information and authentication details. It inherits from <see cref="BaseEntity"/>
-/// to provide common properties like Id and audit fields.
-/// This class handles secure storage and retrieval of user passwords using AES encryption.
-/// Note: For production use, consider using a more secure approach for key management
-/// rather than hardcoding encryption keys in the source code.
-/// </remarks>
 public class Users : BaseEntity
 {
-    /// <summary>
-    /// Gets or sets the full name of the user.
-    /// </summary>
-    /// <value>The complete name including first name and last name.</value>
     public string? FullName { get; set; }
-    
-    /// <summary>
-    /// Gets or sets the user's username.
-    /// </summary>
-    /// <value>The username used for user identification and communication.</value>
     public required string Username { get; set; }
-    
-    /// <summary>
-    /// Gets or sets the user's email address.
-    /// </summary>
-    /// <value>The email address used for user identification and communication.</value>
     public required string Email { get; set; }
-
-    /// <summary>
-    /// Gets or sets the encrypted password.
-    /// </summary>
-    /// <value>The password in its encrypted form. This should never be stored in plain text.</value>
     public string Password { get; private set; } = string.Empty;
     
     public List<Exams> Exams { get; set; } = [];

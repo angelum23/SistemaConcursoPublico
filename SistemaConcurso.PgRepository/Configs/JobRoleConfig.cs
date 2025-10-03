@@ -13,7 +13,6 @@ public class JobRoleConfig : IEntityTypeConfiguration<JobRoles>
         
         builder.HasOne(x => x.Exam)
             .WithMany(e => e.JobRoles)
-            .HasForeignKey(x => x.IdExam)
             .OnDelete(DeleteBehavior.Restrict);
     }
 }

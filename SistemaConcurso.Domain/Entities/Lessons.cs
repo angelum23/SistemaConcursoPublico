@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using SistemaConcurso.Domain.Base;
 using SistemaConcurso.Domain.Enums;
 using SistemaConcurso.Domain.Exceptions;
@@ -10,10 +11,11 @@ public class Lessons : BaseEntity
     public string Description { get; set; }
     public bool Done { get; private set; }
     
+    [ForeignKey("Module")]
     public int IdModule { get; set; }
     public Modules? Module { get; set; }
 
-    public List<LessonAssessment> LessonAssessment { get; set; } = [];
+    public List<LessonAssessments> LessonAssessment { get; set; } = [];
 
     #region Rules
     

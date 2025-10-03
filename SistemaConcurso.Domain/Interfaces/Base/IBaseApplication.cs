@@ -1,9 +1,19 @@
-using SistemaConcurso.Domain.Interfaces.Base;
-
-namespace SistemaConcurso.Domain.Base.Interfaces;
+namespace SistemaConcurso.Domain.Interfaces.Base;
 
 public interface IBaseApplication<T>
 {
+    /// <summary>
+    /// Asynchronously commits all changes made in this context to the underlying database.
+    /// </summary>
+    /// <returns>A task that represents the asynchronous operation. The task result contains the number of state entries written to the database.</returns>
+    public Task<int> CommitAsync();
+    
+    /// <summary>
+    /// Commits all changes made in this context to the underlying database synchronously.
+    /// </summary>
+    /// <returns>The number of state entries written to the database.</returns>
+    public int Commit();
+    
     /// <summary>
     /// Gets a list of all entities.
     /// </summary>

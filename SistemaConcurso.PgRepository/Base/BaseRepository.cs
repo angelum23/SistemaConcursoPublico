@@ -15,6 +15,11 @@ public class BaseRepository<T>(PgDbContext db) : IBaseRepository<T> where T : cl
     {
         return _set.AsQueryable();
     }
+    
+    public IQueryable<TEntity> Get<TEntity>() where TEntity : class
+    {
+        return _db.Set<TEntity>().AsQueryable();
+    }
 
     public async Task<T> AddAsync(T entity)
     {
