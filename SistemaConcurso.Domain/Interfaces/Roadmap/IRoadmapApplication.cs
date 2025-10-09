@@ -7,5 +7,5 @@ namespace SistemaConcurso.Domain.Interfaces.Roadmap;
 
 public interface IRoadmapApplication : IBaseApplication<Roadmaps>
 {
-    Task<List<HomeView>> Home();
+    Task<List<HomeView>> Home(IPagination pagination);
 }

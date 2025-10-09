@@ -6,5 +6,5 @@ namespace SistemaConcurso.Domain.Interfaces.Exam;
 
 public interface IExamRepository : IBaseRepository<Exams>
 {
-    Task<List<HomeExamView>> GetHomeData(int userId);
+    IQueryable<HomeExamView> GetHomeData(int userId, IPagination pagination);
 }

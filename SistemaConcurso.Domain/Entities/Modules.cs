@@ -7,6 +7,7 @@ public class Modules : BaseEntity
 {
     public string Title { get; set; }
     public string Description { get; set; }
+    public int Order { get; set; }
     
     [ForeignKey("Roadmap")]
     public int IdRoadmap { get; set; }

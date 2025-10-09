@@ -12,10 +12,10 @@ namespace SistemaConcurso.Application.Applications;
 public class RoadmapApplication(IRoadmapService service, IExamService examService, IUnitOfWork uow, IClaimService claimService) 
     : BaseApplication<Roadmaps>(service, uow), IRoadmapApplication
 {
-    public async Task<List<HomeView>> Home()
+    public async Task<List<HomeView>> Home(IPagination pagination)
     {
         var user = claimService.GetLoggedUser();
-        var exams = await examService.GetHomeData(user.Id);
+        var exams = await examService.GetHomeData(pagination, user.Id);
         return await service.GetHomeData(exams);
     }
 }

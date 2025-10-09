@@ -9,8 +9,8 @@ namespace SistemaConcurso.Domain.Services;
 
 public class ExamService(IExamRepository repository) : BaseService<Exams>(repository), IExamService
 {
-    public Task<List<HomeExamView>> GetHomeData(int userId)
+    public Task<List<HomeExamView>> GetHomeData(IPagination pagination, int userId)
     {
-        return repository.GetHomeData(userId);
+        return repository.GetHomeData(userId, pagination).ToListAsync();
     }
 }

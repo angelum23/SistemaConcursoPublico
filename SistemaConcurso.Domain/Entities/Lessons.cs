@@ -10,6 +10,7 @@ public class Lessons : BaseEntity
     public string Title { get; set; }
     public string Description { get; set; }
     public bool Done { get; private set; }
+    public int Order { get; set; }
     
     [ForeignKey("Module")]
     public int IdModule { get; set; }
